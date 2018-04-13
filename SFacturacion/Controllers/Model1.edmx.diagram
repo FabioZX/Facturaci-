@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="658c3e4f02de42ba89b46928f82201f7" Name="Diagram1">
+        <EntityTypeShape EntityType="SPfacturacionModel.Articulos_Facturables" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SPfacturacionModel.Clientes" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SPfacturacionModel.Condiciones_Pagos" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SPfacturacionModel.Facturacion" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SPfacturacionModel.Vendedores" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="SPfacturacionModel.FK__Facturaci__IdArt__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="SPfacturacionModel.FK__Facturaci__IdCli__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="SPfacturacionModel.FK__Facturaci__IdCon__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="SPfacturacionModel.FK__Facturaci__IdVen__1B0907CE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

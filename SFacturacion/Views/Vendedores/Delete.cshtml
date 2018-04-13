@@ -1,0 +1,48 @@
+﻿@model UltimoIntento.Controllers.Vendedores
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Estás Seguro que Quieres Eliminar Esto?</h3>
+<div>
+    <h4>Vendedores</h4>
+    <hr />
+    <dl class="dl-horizontal" align="center">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            Porciento de Comision
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Porciento_Comision)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

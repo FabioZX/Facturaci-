@@ -1,0 +1,53 @@
+﻿@model IEnumerable<UltimoIntento.Controllers.Vendedores>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vendedores</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<form action="" method="get" class="navbar-form">
+    <div class="form-group" align="center">
+        <input type="text" id="Criterio" name="Criterio" class="form-control" /><br />
+        <input type="submit" id="cmdBuscar" value="Buscar" class="form-control btn btn-success" />
+    </div>
+</form> <br />
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Porciento de Comision
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Porciento_Comision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdVendedor }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdVendedor }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdVendedor })
+        </td>
+    </tr>
+}
+
+</table>

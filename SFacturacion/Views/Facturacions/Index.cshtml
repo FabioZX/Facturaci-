@@ -1,0 +1,90 @@
+﻿@model IEnumerable<UltimoIntento.Controllers.Facturacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Facturación</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+
+<form action="" method="get"  class="navbar-form" >
+    <div class="form-group" align="center">
+        <input type="text" id="Criterio" name="Criterio" class="form-control"/><br />
+        <input type="submit" id="cmdBuscar" value="Buscar"  class="form-control btn btn-success" />
+        <a class="btn btn-default" href="@Url.Action("ExportReport")" align="center">Descargar Reporte</a>
+    </div>
+</form> <br />
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Forma de Pago
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Comentario
+        </th>
+        <th>
+            Cantidad
+        </th>
+        <th>
+            Precio Unitario
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Nombre Comercial
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Nombre del Vendedor
+        </th>
+        <th></th>
+    </tr>
+   
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Forma_Pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio_Unitario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Articulos_Facturables.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientes.Nombre_Comercial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Condiciones_Pagos.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendedores.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdFacuracion }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.IdFacuracion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdFacuracion })
+        </td>
+    </tr>
+}
+
+</table>

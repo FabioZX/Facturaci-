@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SPfacturacionModelStoreContainer" CdmEntityContainer="SPfacturacionEntities">
+    <EntitySetMapping Name="Articulos_Facturables">
+      <EntityTypeMapping TypeName="SPfacturacionModel.Articulos_Facturables">
+        <MappingFragment StoreEntitySet="Articulos_Facturables">
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="SPfacturacionModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Nombre_Comercial" ColumnName="Nombre_Comercial" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Condiciones_Pagos">
+      <EntityTypeMapping TypeName="SPfacturacionModel.Condiciones_Pagos">
+        <MappingFragment StoreEntitySet="Condiciones_Pagos">
+          <ScalarProperty Name="IdCondicion" ColumnName="IdCondicion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad_Dias" ColumnName="Cantidad_Dias" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturacion">
+      <EntityTypeMapping TypeName="SPfacturacionModel.Facturacion">
+        <MappingFragment StoreEntitySet="Facturacion">
+          <ScalarProperty Name="IdFacuracion" ColumnName="IdFacuracion" />
+          <ScalarProperty Name="Forma_Pago" ColumnName="Forma_Pago" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio_Unitario" />
+          <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdCondicion" ColumnName="IdCondicion" />
+          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendedores">
+      <EntityTypeMapping TypeName="SPfacturacionModel.Vendedores">
+        <MappingFragment StoreEntitySet="Vendedores">
+          <ScalarProperty Name="IdVendedor" ColumnName="IdVendedor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Porciento_Comision" ColumnName="Porciento_Comision" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

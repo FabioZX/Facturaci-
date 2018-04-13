@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SPfacturacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Articulos_Facturables">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__IdArt__182C9B23" FromRole="Articulos_Facturables" ToRole="Facturacion" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Comercial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__IdCli__1920BF5C" FromRole="Clientes" ToRole="Facturacion" />
+  </EntityType>
+  <EntityType Name="Condiciones_Pagos">
+    <Key>
+      <PropertyRef Name="IdCondicion" />
+    </Key>
+    <Property Name="IdCondicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad_Dias" Type="Int32" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__IdCon__1A14E395" FromRole="Condiciones_Pagos" ToRole="Facturacion" />
+  </EntityType>
+  <EntityType Name="Facturacion">
+    <Key>
+      <PropertyRef Name="IdFacuracion" />
+    </Key>
+    <Property Name="IdFacuracion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Forma_Pago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Comentario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio_Unitario" Type="Int32" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdCondicion" Type="Int32" />
+    <Property Name="IdVendedor" Type="Int32" />
+    <NavigationProperty Name="Articulos_Facturables" Relationship="Self.FK__Facturaci__IdArt__182C9B23" FromRole="Facturacion" ToRole="Articulos_Facturables" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK__Facturaci__IdCli__1920BF5C" FromRole="Facturacion" ToRole="Clientes" />
+    <NavigationProperty Name="Condiciones_Pagos" Relationship="Self.FK__Facturaci__IdCon__1A14E395" FromRole="Facturacion" ToRole="Condiciones_Pagos" />
+    <NavigationProperty Name="Vendedores" Relationship="Self.FK__Facturaci__IdVen__1B0907CE" FromRole="Facturacion" ToRole="Vendedores" />
+  </EntityType>
+  <EntityType Name="Vendedores">
+    <Key>
+      <PropertyRef Name="IdVendedor" />
+    </Key>
+    <Property Name="IdVendedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Porciento_Comision" Type="Double" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Facturacion" Relationship="Self.FK__Facturaci__IdVen__1B0907CE" FromRole="Vendedores" ToRole="Facturacion" />
+  </EntityType>
+  <Association Name="FK__Facturaci__IdArt__182C9B23">
+    <End Role="Articulos_Facturables" Type="Self.Articulos_Facturables" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos_Facturables">
+        <PropertyRef Name="IdArticulo" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdCli__1920BF5C">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdCon__1A14E395">
+    <End Role="Condiciones_Pagos" Type="Self.Condiciones_Pagos" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condiciones_Pagos">
+        <PropertyRef Name="IdCondicion" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdCondicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdVen__1B0907CE">
+    <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedores">
+        <PropertyRef Name="IdVendedor" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdVendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SPfacturacionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Articulos_Facturables" EntityType="Self.Articulos_Facturables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="Condiciones_Pagos" EntityType="Self.Condiciones_Pagos" />
+    <EntitySet Name="Facturacion" EntityType="Self.Facturacion" />
+    <EntitySet Name="Vendedores" EntityType="Self.Vendedores" />
+    <AssociationSet Name="FK__Facturaci__IdArt__182C9B23" Association="Self.FK__Facturaci__IdArt__182C9B23">
+      <End Role="Articulos_Facturables" EntitySet="Articulos_Facturables" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdCli__1920BF5C" Association="Self.FK__Facturaci__IdCli__1920BF5C">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdCon__1A14E395" Association="Self.FK__Facturaci__IdCon__1A14E395">
+      <End Role="Condiciones_Pagos" EntitySet="Condiciones_Pagos" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdVen__1B0907CE" Association="Self.FK__Facturaci__IdVen__1B0907CE">
+      <End Role="Vendedores" EntitySet="Vendedores" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

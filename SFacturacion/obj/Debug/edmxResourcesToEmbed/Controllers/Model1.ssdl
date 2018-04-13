@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SPfacturacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articulos_Facturables">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+    </Key>
+    <Property Name="IdArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="20" />
+    <Property Name="Precio" Type="int" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Comercial" Type="varchar" MaxLength="20" />
+    <Property Name="Cedula" Type="char" MaxLength="11" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Condiciones_Pagos">
+    <Key>
+      <PropertyRef Name="IdCondicion" />
+    </Key>
+    <Property Name="IdCondicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="20" />
+    <Property Name="Cantidad_Dias" Type="int" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Facturacion">
+    <Key>
+      <PropertyRef Name="IdFacuracion" />
+    </Key>
+    <Property Name="IdFacuracion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Forma_Pago" Type="varchar" MaxLength="20" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Comentario" Type="varchar" MaxLength="30" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio_Unitario" Type="int" />
+    <Property Name="IdArticulo" Type="int" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="IdCondicion" Type="int" />
+    <Property Name="IdVendedor" Type="int" />
+  </EntityType>
+  <EntityType Name="Vendedores">
+    <Key>
+      <PropertyRef Name="IdVendedor" />
+    </Key>
+    <Property Name="IdVendedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" />
+    <Property Name="Porciento_Comision" Type="float" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Facturaci__IdArt__182C9B23">
+    <End Role="Articulos_Facturables" Type="Self.Articulos_Facturables" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos_Facturables">
+        <PropertyRef Name="IdArticulo" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdArticulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdCli__1920BF5C">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdCon__1A14E395">
+    <End Role="Condiciones_Pagos" Type="Self.Condiciones_Pagos" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condiciones_Pagos">
+        <PropertyRef Name="IdCondicion" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdCondicion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facturaci__IdVen__1B0907CE">
+    <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+    <End Role="Facturacion" Type="Self.Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendedores">
+        <PropertyRef Name="IdVendedor" />
+      </Principal>
+      <Dependent Role="Facturacion">
+        <PropertyRef Name="IdVendedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SPfacturacionModelStoreContainer">
+    <EntitySet Name="Articulos_Facturables" EntityType="Self.Articulos_Facturables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Condiciones_Pagos" EntityType="Self.Condiciones_Pagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturacion" EntityType="Self.Facturacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Facturaci__IdArt__182C9B23" Association="Self.FK__Facturaci__IdArt__182C9B23">
+      <End Role="Articulos_Facturables" EntitySet="Articulos_Facturables" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdCli__1920BF5C" Association="Self.FK__Facturaci__IdCli__1920BF5C">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdCon__1A14E395" Association="Self.FK__Facturaci__IdCon__1A14E395">
+      <End Role="Condiciones_Pagos" EntitySet="Condiciones_Pagos" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facturaci__IdVen__1B0907CE" Association="Self.FK__Facturaci__IdVen__1B0907CE">
+      <End Role="Vendedores" EntitySet="Vendedores" />
+      <End Role="Facturacion" EntitySet="Facturacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

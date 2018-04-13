@@ -1,0 +1,96 @@
+﻿@model UltimoIntento.Controllers.Facturacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Estás Seguro que Quieres Eliminar Esto?</h3>
+<div>
+    <h4>Facturación</h4>
+    <hr />
+    <dl class="dl-horizontal" align="center">
+        <dt>
+            Forma de Pago
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forma_Pago)
+        </dd>
+
+        <dt>
+            Fecha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            Comentario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            Cantidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            Precio Unitario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_Unitario)
+        </dd>
+
+        <dt>
+            Descripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulos_Facturables.Descripcion)
+        </dd>
+
+        <dt>
+            Nombre Comercial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientes.Nombre_Comercial)
+        </dd>
+
+        <dt>
+            Descripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Condiciones_Pagos.Descripcion)
+        </dd>
+
+        <dt>
+            Nombre del Vendedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vendedores.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" align="center"/> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

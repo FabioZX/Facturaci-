@@ -1,0 +1,48 @@
+﻿@model UltimoIntento.Controllers.Condiciones_Pagos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Estás Seguro que Quieres Eliminar Esto?</h3>
+<div>
+    <h4>Condiciones de Pagos</h4>
+    <hr />
+    <dl class="dl-horizontal" align="center">
+        <dt>
+            Descripcion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            Cantidad de Días
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad_Dias)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>
